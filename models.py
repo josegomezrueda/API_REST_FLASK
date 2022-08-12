@@ -7,7 +7,7 @@ from app import db
 class Usuario(db.Model):
     __tablename__='usuario'
     id = db.Column(Integer, autoincrement=True, primary_key=True)
-    username = db.Column(db.String(70), unique=False)
+    username = db.Column(db.String(70), unique=True)
     password = db.Column(db.String(200))
     ventas = relationship('Ventas', backref="usuario", cascade="delete, merge")
 class Ventas(db.Model):

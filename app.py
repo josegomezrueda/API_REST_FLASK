@@ -54,7 +54,7 @@ def login_user():
         return jsonify({"respuesta":"Could not verify"})
     with engine.connect() as con:
         user = con.execute(f"select * from usuario where username = '{auth.username}' ").one()
-
+        print(user)
     if check_password_hash(user.password, auth.password):
         token = jwt.encode({'public_id':user[1], 'exp': datetime.datetime.utcnow()+datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         return jsonify({'token':token.decode('UTF-8')})
