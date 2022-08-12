@@ -64,10 +64,10 @@ def login_user():
 
 
 @app.route('/create_user', methods=['POST'])
-@token_required
+# @token_required
 def create_user(current_user):
     # if current_user == "administrador":
-    #     data=json.loads(request.data)
+        data=json.loads(request.data)
         
         if 'username' not in data:
             return jsonify({"respuesta":"No estás enviando el username"})
