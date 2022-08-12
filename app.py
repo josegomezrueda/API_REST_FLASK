@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 db=SQLAlchemy(app)
 session = Session()
-from models import Usuario
+from models import *
 
 @app.route('/hola', methods=['GET'])
 def hola():
@@ -65,7 +65,7 @@ def login_user():
 
 @app.route('/create_user', methods=['POST'])
 # @token_required
-def create_user(current_user):
+def create_user():
     # if current_user == "administrador":
         data=json.loads(request.data)
         
