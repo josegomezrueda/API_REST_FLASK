@@ -1,0 +1,10 @@
+Flask==1.1.4
+sqlalchemy==1.4.40
+psycopg2==2.9.3
+jwt==1.2.0
+PyJWT==1.5.3
+flask-script==2.0.6
+flask-migrate==2.5.3
+flask_sqlalchemy
+markupsafe==2.0.1
+gunicorn
