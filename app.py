@@ -64,9 +64,9 @@ def login_user():
 
 
 @app.route('/create_user', methods=['POST'])
-# @token_required
-def create_user():
-    # if current_user == "administrador":
+@token_required
+def create_user(current_user):
+    if current_user == "administrador":
         data=json.loads(request.data)
         
         if 'username' not in data:
@@ -88,8 +88,8 @@ def create_user():
             except:
                 return jsonify({"respuesta":"Usuario ya creado en la base de datos"})
         return jsonify({"respuesta":"Usuario creado correctamente"})
-    # else:
-    #     return jsonify({"respuesta":"Usuario no tiene permitido crear más usuarios"})
+    else:
+        return jsonify({"respuesta":"Usuario no tiene permitido crear más usuarios"})
 
 @app.route('/obtener_venta', methods=['GET'])
 @token_required
