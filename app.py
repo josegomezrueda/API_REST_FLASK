@@ -8,7 +8,7 @@ import json
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
-from jwt import PyJWT
+import jwt
 import datetime
 
 
@@ -39,7 +39,7 @@ def token_required(f):
             return jsonify({'message': ''})
 
         try:
-            data = PyJWT().decode(token, app.config['SECRET_KEY'])
+            data = jwt.decode(token, app.config['SECRET_KEY'])
         except:
             return jsonify({'message': 'No has enviado el token'})
         return f(data['public_id'],*args, **kwargs)
@@ -56,7 +56,7 @@ def login_user():
         user = con.execute(f"select * from usuario where username = '{auth.username}' ").one()
         print(user)
     if check_password_hash(user.password, auth.password):
-        token = PyJWT().encode({'public_id':user[1], 'exp': datetime.datetime.utcnow()+datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'public_id':user[1], 'exp': datetime.datetime.utcnow()+datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         return jsonify({'token':token.decode('UTF-8')})
     else:
         return jsonify({"respuesta":"Contraseña incorrecta"})
