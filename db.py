@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # connection_db = "postgresql://postgres:admin@localhost:5432/flask_db"
-connection_db = "postgresql://aucpqrekjkslfu:106ac53ecc7ac7ea7806f80c0f7c6aa70ec43593c0dcad4b935db9f77a7f1a13@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/d92gluid5qr66u"
+connection_db = "postgresql://igqhpsbklssawn:434ae956ad3a604d715c994180696d4a1b5d3c8f024a273971f572ba1c4aadd9@ec2-34-234-240-121.compute-1.amazonaws.com:5432/d3iffjku1liua3"
 
 Base = declarative_base()
 
