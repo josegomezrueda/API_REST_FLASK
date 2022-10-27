@@ -27,6 +27,7 @@ pipeline {
                     def packageJSON = readJSON file: 'package.json'
                     env.packageJSONVersion = packageJSON.version
                     sh 'echo ${packageJSONVersion}'
+                    echo docker --version
                     // sh 'docker build --tag prueba-python:${packageJSONVersion} .'
                 }
             }
