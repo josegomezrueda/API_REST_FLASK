@@ -4,26 +4,13 @@ pipeline {
         python '3.9.0'
     }
     stages {
-        stage('Building docker image...') {
+        stage('Building docker image python..') {
             steps {
                 script {
                     def packageJSON = readJSON file: 'package.json'
                     env.packageJSONVersion = packageJSON.version
-                    sh 'docker build --tag node-app:${packageJSONVersion} .'
-                    sh 'docker build --tag node-app:latest .'
-                }
-            }
-        }
-        stage('Pushing docker image...') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                        sh 'docker login -u josegomezrueda -p contrase'
-                        sh 'docker tag node-app:${packageJSONVersion} diegobsnit/node-app:${packageJSONVersion}'
-                        sh 'docker push diegobsnit/node-app:${packageJSONVersion}'
-                        sh 'docker tag node-app:latest diegobsnit/node-app:latest'
-                        sh 'docker push diegobsnit/node-app:latest'
-                    }
+                    sh 'docker build --tag prueba-python:${packageJSONVersion} .'
+                    sh 'docker build --tag prueba-python:latest .'
                 }
             }
         }
