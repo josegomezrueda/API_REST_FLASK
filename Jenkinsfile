@@ -33,8 +33,8 @@ pipeline {
                     def packageJSONVersion = packageJSON.version
                     withCredentials([string(credentialsId: 'passdockerjose', variable: 'passdockerjose')]) {
                         sh 'docker login -u josegomezrueda -p $passdockerjose'
-                        sh 'docker tag prueba-python:${packageJSONVersion} josegomezrueda/prueba-python:${packageJSONVersion}'
-                        sh 'docker push josegomezrueda/prueba-python:${packageJSONVersion}'
+                        sh 'docker tag swagger-flask:${packageJSONVersion} josegomezrueda/swagger-flask:${packageJSONVersion}'
+                        sh 'docker push josegomezrueda/swagger-flask:${packageJSONVersion}'
                     }
                 }
             }
