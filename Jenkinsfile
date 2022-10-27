@@ -5,9 +5,14 @@ pipeline {
       }
     }
     stages {
-        stage('Test') {
+        stage('Version python') {
             steps {
               sh """python --version"""
+            }
+        }
+        stage('Install requirements') {
+            steps {
+              sh """pip install -r requirements.txt"""
             }
         }
     }
