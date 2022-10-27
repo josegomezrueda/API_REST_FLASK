@@ -12,11 +12,11 @@ pipeline {
         }
         stage('Install requirements') {
             steps {
-                sh 'sudo pip install --upgrade pip'
-                sh 'pip install virtualenv --user'
-                sh 'virtualenv env_jose -p python3.9'
-                sh 'source env_jose/bin/activate'
-                sh 'pip install -r requirements.txt'
+                sh 'sudo python -m pip install --user --upgrade pip'
+                // sh 'pip install virtualenv --user'
+                // sh 'virtualenv env_jose -p python3.9'
+                // sh 'source env_jose/bin/activate'
+                // sh 'pip install -r requirements.txt'
             }
         }
     }
