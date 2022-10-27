@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Install requirements') {
             steps {
-                sh 'virtualenv env_jose -p python==3.9.0'
+                sh 'virtualenv env_jose -p python3.9'
                 sh 'source env_jose/bin/activate'
                 sh 'pip install -r requirements.txt'
             }
