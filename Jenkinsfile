@@ -26,18 +26,18 @@ pipeline {
                 }
             }
         }
-        // stage('Pushing docker image...') {
-        //     steps {
-        //         script {
-        //             def packageJSON = readJSON file: 'package.json'
-        //             def packageJSONVersion = packageJSON.version
-        //             withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'pass-docker-jose')]) {
-        //                 sh 'docker login -u diegobsnit -p $pass-docker-jose'
-        //                 sh 'docker tag prueba-python:${packageJSONVersion} josegomezrueda/prueba-python:${packageJSONVersion}'
-        //                 sh 'docker push josegomezrueda/prueba-python:${packageJSONVersion}'
-        //             }
-        //         }
-        //     }
+        stage('Pushing docker image...') {
+            steps {
+                script {
+                    def packageJSON = readJSON file: 'package.json'
+                    def packageJSONVersion = packageJSON.version
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'pass-docker-jose')]) {
+                        sh 'docker login -u josegomezrueda -p $pass-docker-jose'
+                        sh 'docker tag prueba-python:${packageJSONVersion} josegomezrueda/prueba-python:${packageJSONVersion}'
+                        sh 'docker push josegomezrueda/prueba-python:${packageJSONVersion}'
+                    }
+                }
+            }
         // }
     }
 }
