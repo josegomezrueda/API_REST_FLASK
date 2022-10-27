@@ -31,8 +31,8 @@ pipeline {
                 script {
                     def packageJSON = readJSON file: 'package.json'
                     def packageJSONVersion = packageJSON.version
-                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'pass-docker-jose')]) {
-                        sh 'docker login -u josegomezrueda -p $pass-docker-jose'
+                    withCredentials([string(credentialsId: 'passdockerjose', variable: 'passdockerjose')]) {
+                        sh 'docker login -u josegomezrueda -p $passdockerjose'
                         sh 'docker tag prueba-python:${packageJSONVersion} josegomezrueda/prueba-python:${packageJSONVersion}'
                         sh 'docker push josegomezrueda/prueba-python:${packageJSONVersion}'
                     }
