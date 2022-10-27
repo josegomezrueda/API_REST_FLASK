@@ -35,7 +35,7 @@ session_bd = Session()
 from models import *
 bp_api = Blueprint('Api',__name__,url_prefix="/Api")
 
-api = Api(bp_api, version="1.0", title="Api",description="End Points", authorizations=authorizations)
+api = Api(bp_api, version="1.0", title="Api",description="Swagger End Points", authorizations=authorizations)
 app.register_blueprint(bp_api)
 
 
